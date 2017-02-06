@@ -49,6 +49,6 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/vladimirpavk/Angular2-Skeleton.git"
+    "url": "git://github.com/vladimirpavk/Angular2-Auth0-new-build"
   }
 }

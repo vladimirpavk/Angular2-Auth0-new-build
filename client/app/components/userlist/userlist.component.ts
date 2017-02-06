@@ -9,11 +9,14 @@ let __moduleName: any;
     templateUrl: 'userlist.component.html'    
 })
 export class UserListComponent implements OnInit{
+    
+    private _messageH2: string;
+
     constructor(){
 
     }
 
     ngOnInit(){
-
+        this._messageH2="User List Component";
     }
 }

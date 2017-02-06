@@ -1,16 +1,19 @@
-<div class="jumbotron">  
-        <div class="page-header">  
-            <h1>{{_pageTitle}}</h1>
-        </div>
+<nav class="navbar navbar-inverse">
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">    
-                <ul class="nav navbar-nav">
-                    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-                    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>                   
-                </ul>
-            </div>
-        </nav>      
-    <router-outlet></router-outlet>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">{{_pageTitle}}</a>
+    </div>    
+    <ul  *ngIf="_loggedIn" class="nav navbar-nav">      
+      <li><a href="#">List</a></li>
+      <li><a href="#">New User</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="_loggedIn"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <li *ngIf="!_loggedIn" (click)="_authService.login()"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
 
-</div>
+</nav>
+  
+<router-outlet></router-outlet>

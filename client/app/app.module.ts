@@ -6,6 +6,9 @@ import { AppComponent }   from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { PleaseLoginComponent } from './components/pleaselogin/pleaselogin.component';
+import { UserListComponent } from './components/userlist/userlist.component';
+import { UserNewComponent } from './components/usernew/usernew.component';
 
 import { routing, appRoutingProviders } from './app.routes';
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
@@ -15,7 +18,10 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
   declarations: [ AppComponent,
                   LoginComponent,
                   PageNotFoundComponent,
-                  HomeComponent
+                  HomeComponent,
+                  PleaseLoginComponent,
+                  UserListComponent,
+                  UserNewComponent
              ],
   bootstrap:    [ AppComponent ],
   providers: [ {
