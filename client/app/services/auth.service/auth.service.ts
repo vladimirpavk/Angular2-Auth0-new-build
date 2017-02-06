@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { myConfig } from './auth.config';
 import { tokenNotExpired } from 'angular2-jwt';
 
@@ -10,11 +10,16 @@ export class AuthService{
 
     private lock=new Auth0Lock(myConfig.clientID, myConfig.domain, {});        
 
+    public auth: EventEmitter<any>= new EventEmitter();
+
     constructor(){    
         this.lock.on("authenticated", (authResult)=>{
             console.log("Authenticated");
             console.log(authResult);
             localStorage.setItem('id_token', authResult.idToken);
+
+            console.log("emit");
+            this.auth.emit({ "option" : "success" });
         });        
     }
 
