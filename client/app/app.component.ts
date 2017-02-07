@@ -14,16 +14,11 @@ import { AuthService } from './services/auth.service/auth.service';
 export class AppComponent implements OnInit{ 
 
   private _pageTitle: string;
-  private _loggedIn: boolean;
 
-  constructor(private _authService: AuthService,
-              private _router: Router){
-    this._pageTitle="User Management Console";
-  }
-
-  ngOnInit(){
-    this._loggedIn=this._authService.authenticated();
-    if(this._loggedIn) this._router.navigate(['/userlist']);
+  constructor(){}
+ 
+  ngOnInit(){   
+    this._pageTitle="User Management Console"; 
   }
 
 }

@@ -11,6 +11,8 @@ import { UserListComponent } from './components/userlist/userlist.component';
 import { UserNewComponent } from './components/usernew/usernew.component';
 
 import { routing, appRoutingProviders } from './app.routes';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -24,9 +26,12 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
                   UserNewComponent
              ],
   bootstrap:    [ AppComponent ],
-  providers: [ {
+  providers: [ appRoutingProviders,
+               AUTH_PROVIDERS,
+               {
                   provide: LocationStrategy,
                   useClass: PathLocationStrategy
-             }]
+               }
+             ]
 })
 export class AppModule { }

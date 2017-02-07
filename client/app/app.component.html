@@ -1,19 +1,2 @@
-<nav class="navbar navbar-inverse">
-
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">{{_pageTitle}}</a>
-    </div>    
-    <ul  *ngIf="_loggedIn" class="nav navbar-nav">      
-      <li><a href="#">List</a></li>
-      <li><a href="#">New User</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="_loggedIn"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-      <li *ngIf="!_loggedIn" (click)="_authService.login()"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-
-</nav>
-  
+<h2>{{_pageTitle}}
 <router-outlet></router-outlet>
