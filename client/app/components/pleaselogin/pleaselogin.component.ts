@@ -16,6 +16,10 @@ export class PleaseLoginComponent implements OnInit{
     constructor(private _authService: AuthService,
                 private _router: Router
     ){     
+        this._authService.auth.subscribe(()=>{
+            console.log('PleaseLoginComponent auth');
+            this._router.navigate(['/home']);
+        })
     }
 
     ngOnInit(){
