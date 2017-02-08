@@ -11,7 +11,7 @@ import { PleaseLoginComponent } from './components/pleaselogin/pleaselogin.compo
 import { UserListComponent } from './components/userlist/userlist.component';
 import { UserNewComponent } from './components/usernew/usernew.component';
 
-import { homeRoutes3 } from './components/home/home.routes';
+import { homeRoutes3, homeRoutes } from './components/home/home.routes';
 
 //When we use PathLocationStrategy
 const appRoutes: Routes = [  
@@ -19,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'login', component: PleaseLoginComponent, canActivate: [ AuthGuard2 ] },  
   //{ path: 'userlist', component: UserListComponent, canActivate: [AuthGuard] },
   //{ path: 'usernew', component: UserNewComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ], children: homeRoutes3 },
+  //{ path: 'home', component: HomeComponent, canActivate: [ AuthGuard ], children: homeRoutes3 },
+  ...homeRoutes,
   { path: 'pnf', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'pnf', pathMatch: 'full'}
 ];

@@ -11,7 +11,7 @@ import { UserListComponent } from './components/userlist/userlist.component';
 import { UserNewComponent } from './components/usernew/usernew.component';
 
 import { routing, appRoutingProviders } from './app.routes';
-import { homeRouting, homeRoutingProviders } from './components/home/home.routes';
+//import { homeRouting, homeRoutingProviders } from './components/home/home.routes';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -20,7 +20,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-  imports:      [ BrowserModule, routing/*, homeRouting*/ ],
+  imports:      [ BrowserModule, routing ],
   declarations: [ AppComponent,
                   LoginComponent,
                   PageNotFoundComponent,
@@ -30,8 +30,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
                   UserNewComponent
              ],
   bootstrap:    [ AppComponent ],
-  providers: [ appRoutingProviders,
-               homeRoutingProviders,             
+  providers: [ appRoutingProviders,         
                AUTH_PROVIDERS,
                {
                   provide: LocationStrategy,

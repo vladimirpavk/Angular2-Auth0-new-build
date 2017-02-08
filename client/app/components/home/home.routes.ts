@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { UserListComponent } from '../userlist/userlist.component';
 import { UserNewComponent } from '../usernew/usernew.component';
 
+import { AuthGuard } from '../../AuthGuard'; 
 
 export const homeRoutes3=[    
     {
@@ -50,15 +51,16 @@ const homeRoutes3: Routes = [
             }
         ]
     }
-];
-/*const homeRoutes: Routes = [
+];*/
+export const homeRoutes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
+        canActivate: [ AuthGuard ],
         children: [
             {
                 path: '',
-                redirectTo: '/userlist',
+                redirectTo: 'userlist',
                 pathMatch: 'full'
             },
             {
@@ -71,13 +73,13 @@ const homeRoutes3: Routes = [
             },
             {
                 path: '**',
-                redirectTo: '/userlist',
+                redirectTo: 'userlist',
                 pathMatch: 'full'
             }
         ]
     }
-];*/
-export const homeRoutingProviders: any[] = [ 
+];
+/*export const homeRoutingProviders: any[] = [ 
 ];
 
-//export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);
+export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);*/
