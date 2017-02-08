@@ -4,6 +4,9 @@ var __moduleName: any;
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service/auth.service';
 import { Observable } from 'rxjs/Observable';
+
+import { RouterModule } from '@angular/router';
+
 //import { UsersService } from '../users/users.service';
 //import { User } from '../users/user';
 
@@ -11,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
     moduleId: __moduleName,
     selector: 'home',
     templateUrl: 'home.component.html',
-    providers: [ AuthService ]    
+    providers: [ AuthService, RouterModule ]    
 })
 export class HomeComponent implements OnInit{
 
@@ -28,7 +31,7 @@ export class HomeComponent implements OnInit{
         this._homeMessage="Welcome to the application...";
         this._loginMessage="...you are authorized";
         this._notloginMessage="...you are NOT authorized. Please login or die.";
-        console.log("From HomeComponent " + this._authService.authenticated());
+        //console.log("From HomeComponent " + this._authService.authenticated());
         
       /*  this._usersService.getUsers().subscribe(
                 users => this._users = users,

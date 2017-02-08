@@ -7,3 +7,9 @@
 <div *ngIf="!_authService.authenticated()" class="alert alert-danger">
     <strong >{{_notloginMessage}}</strong>
 </div>
+
+<div style="background-color: rgb(250, 250, 250)">
+    <a routerLink="userlist">List all users</a>
+    <a routerLink="usernew">Add new user</a>
+    <router-outlet></router-outlet>
+</div>

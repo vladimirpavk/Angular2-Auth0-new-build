@@ -1,5 +1,5 @@
 {
-  "name": "Angular2-Skeleton",
+  "name": "Angular2-Auth0-new-build",
   "version": "0.0.0",
   "description": "Node Typescript Express Gulp Angular 2 application skeleton",
   "main": "server_app.js",
