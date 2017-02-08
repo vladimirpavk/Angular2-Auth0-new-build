@@ -6,7 +6,12 @@ import { UserListComponent } from '../userlist/userlist.component';
 import { UserNewComponent } from '../usernew/usernew.component';
 
 
-export const homeRoutes3=[                     
+export const homeRoutes3=[    
+    {
+        path: '',
+        redirectTo: 'userlist',
+        pathMatch: 'full'
+    }                 ,
             {
                 path: 'userlist',
                 component: UserListComponent
