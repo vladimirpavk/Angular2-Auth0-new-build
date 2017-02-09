@@ -5,10 +5,10 @@ import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
 
 export const homeRoutes: Routes = [ 
-  // { path: '', redirectTo: 'userlist', pathMatch: 'full' },
+   { path: '', redirectTo: 'userlist', pathMatch: 'full' },
    { path: 'userlist', component: UserListComponent },
    { path: 'usernew',  component: UserNewComponent },
-   //{ path: '**', redirectTo: 'userlist' }
+   { path: '**', redirectTo: 'userlist' }
 ];
 
 @NgModule({

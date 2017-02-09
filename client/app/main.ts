@@ -3,5 +3,4 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app.module';
 import { HomeModule } from './components/home/home.module';
 const platform = platformBrowserDynamic();
-//platform.bootstrapModule(AppModule);
-platform.bootstrapModule(HomeModule);
+platform.bootstrapModule(AppModule);

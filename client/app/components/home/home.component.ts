@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service/auth.service';
 import { Observable } from 'rxjs/Observable';
 
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule  } from '@angular/router';
 
 
 //import { UsersService } from '../users/users.service';
@@ -15,7 +15,7 @@ import { RouterModule, Router } from '@angular/router';
     moduleId: __moduleName,
     selector: 'home',
     templateUrl: 'home.component.html',
-    providers: [ AuthService, RouterModule, Router ]    
+    providers: [ AuthService, RouterModule ]    
 })
 export class HomeComponent implements OnInit{
 

@@ -16,7 +16,6 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   imports:      [ 
                   BrowserModule,
-                  HomeModule,
                   AppRoutingModule
                 ],
   declarations: [ 
