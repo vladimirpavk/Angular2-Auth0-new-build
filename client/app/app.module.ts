@@ -9,13 +9,17 @@ import { PleaseLoginComponent } from './components/pleaselogin/pleaselogin.compo
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './components/home/home.module';
+import { HomeRoutingModule } from './components/home/home-routing.module';
 
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
+
+import { HomeModule } from './components/home/home.module';
 
 @NgModule({
   imports:      [ 
                   BrowserModule,
+                  HomeModule,
+                  HomeRoutingModule,
                   AppRoutingModule
                 ],
   declarations: [ 

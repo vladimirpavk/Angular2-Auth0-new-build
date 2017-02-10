@@ -2,7 +2,7 @@
 var __moduleName: any;
 
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service/auth.service';
 
 @Component({
