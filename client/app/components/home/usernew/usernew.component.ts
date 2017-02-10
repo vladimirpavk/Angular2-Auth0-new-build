@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service/auth.service';
 
 let __moduleName: any;
 
@@ -11,7 +12,7 @@ export class UserNewComponent implements OnInit{
     
     private _messageH2: string;
 
-    constructor(){
+    constructor(private _authService: AuthService){
 
     }
 

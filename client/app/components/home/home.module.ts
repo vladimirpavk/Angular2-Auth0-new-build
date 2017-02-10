@@ -12,6 +12,10 @@ import { HomeRoutingModule } from './home-routing.module';
 //providers
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
+//services
+import { AuthService } from '../../services/auth.service/auth.service';
+
+
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -28,6 +32,10 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
         {   
             provide: LocationStrategy,
             useClass: PathLocationStrategy
+        },
+        {
+            provide: AuthService,
+            useClass: AuthService
         }
     ],
     bootstrap: [ HomeComponent ]
