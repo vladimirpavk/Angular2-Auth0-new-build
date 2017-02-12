@@ -38,6 +38,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
             useClass: AuthService
         }
     ],
+    exports: [ HomeRoutingModule ],
     bootstrap: [ HomeComponent ]
 })
 export class HomeModule {}

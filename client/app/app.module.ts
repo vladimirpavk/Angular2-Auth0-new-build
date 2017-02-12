@@ -12,14 +12,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeRoutingModule } from './components/home/home-routing.module';
 
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HomeModule } from './components/home/home.module';
+import { AuthService } from './services/auth.service/auth.service';
 
 @NgModule({
   imports:      [ 
                   BrowserModule,
-                  HomeModule,
-                  HomeRoutingModule,
+                  RouterModule,
+                  HomeModule,                
                   AppRoutingModule
                 ],
   declarations: [ 
@@ -33,6 +35,10 @@ import { HomeModule } from './components/home/home.module';
                {
                   provide: LocationStrategy,
                   useClass: PathLocationStrategy
+               },
+               {
+                 provide: AuthService,
+                 useClass: AuthService
                }
              ]
 })
