@@ -1,4 +1,4 @@
-/// <reference path="../../../../node_modules/@angular/common/index.d.ts" />
+/// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
 import { Component, OnInit } from '@angular/core';
 
 let __moduleName: any;
