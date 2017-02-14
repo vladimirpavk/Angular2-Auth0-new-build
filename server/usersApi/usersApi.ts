@@ -2,16 +2,15 @@ let jsonFile=require('jsonfile');
 
 import { User, UserInterface } from './user.module';
 
-export class Users implements UserInterface{
+export class UsersApi implements UserInterface{
     
     private _allUsers: User[];
     private _filename: string;
 
-    constructor(userFile: string){
+    constructor(){
 
-        this._filename=userFile; //'./server/js/usersAPI/users.json';
-        this._allUsers=jsonFile.readFileSync(this._filename);
-
+        this._filename='./server/usersApi/users.json';
+        this._allUsers=jsonFile.readFileSync(this._filename);      
     }    
 
     public getAllUsers(): User[]{
@@ -29,17 +28,23 @@ export class Users implements UserInterface{
         else return false; 
     }
 
-    public getUserId(userId: number): User{        
+    public getUserById(userId: number): User{   
+        console.log(userId);     
        return this._allUsers.find(this._compare, userId);       
     }
 
     public addUser(user: User):void{    
-        if(!this.getUserId(user.id)){
+        if(!this.getUserById(user.id)){
             this._allUsers.push(user);
             this.writeFile();
         }
         else{
             console.log("Duplicate id entry...");
+        }
+    }
+
+    public deleteUser(user: User): void{
+        if(this.getUserById(user.id)){    
         }
     }
 

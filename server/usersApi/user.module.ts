@@ -8,7 +8,7 @@ export class User{
 export interface UserInterface{
        getAllUsers(): User[];
        getRandomUser(): User;
-       getUserId(userid:number): User;
+       getUserById(userid:number): User;
 
        addUser(user: User):void;
        writeFile(): void;
