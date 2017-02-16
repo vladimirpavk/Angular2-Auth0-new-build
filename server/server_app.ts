@@ -26,11 +26,12 @@ export class ServerApp {
         this._app.use('/www', express.static(path.resolve(__dirname, '../client')));        
 
         //UsersAPi and REST   
-        /// this._app.use('/users', jwtCheck);
+        //this._app.use('/usersApi', jwtCheck);
         this._usersApi=new UsersApi();      
         this._app.get('/usersApi/listUsers', (req,res)=>this._listUsers(req, res));
-        this._app.post('/usersApi/addUser', (req, res)=>this._addUser);
-        this._app.delete('/usersApi/deleteUser', (req, res)=>this._addUser(req, res));
+        this._app.post('/usersApi/addUser', (req, res)=>this._addUser(req, res));
+        //this._app.delete('/usersApi/deleteUser', (req, res)=>this._deleteUser(req, res));
+        this._app.get('/usersApi/deleteUser/:id', (req, res)=>this._deleteUser(req, res));        
         this._app.get('/usersApi/:id', (req, res)=>this._showUserById(req, res));
 
 
@@ -43,16 +44,19 @@ export class ServerApp {
      }
 
      private _addUser(req:express.Request, res: express.Response){
-         //res.status(200)         
+         console.log("addUser");
+         res.status(401);         
      }     
 
      private _deleteUser(req:express.Request, res: express.Response){
-
+            res.status(200).json(this._usersApi.deleteUser(req.params['id']));          
      }
 
      private _showUserById(req:express.Request, res: express.Response){
         //console.log(req.params['id']);
-        return this._usersApi.getUserById(req.params['id']);
+        return res.status(200).json(
+            this._usersApi.getUserById(req.params['id'])
+        );
      }
 
     private _renderOk(req: express.Request, res: express.Response){

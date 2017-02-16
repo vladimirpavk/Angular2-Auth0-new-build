@@ -12,7 +12,8 @@ export class AppComponent implements OnInit{
 
   private _pageTitle: string;
 
-  constructor(){}
+  constructor(
+  ){}
  
   ngOnInit(){   
     this._pageTitle="User Management Console"; 

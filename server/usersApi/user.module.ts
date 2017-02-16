@@ -6,9 +6,10 @@ export class User{
 }
 
 export interface UserInterface{
-       getAllUsers(): User[];
+       getAllUsers(): Array<User>;
        getRandomUser(): User;
-       getUserById(userid:number): User;
+      // getUserById(userid:number): User;
+      getUserById(userId: number): User;
 
        addUser(user: User):void;
        writeFile(): void;

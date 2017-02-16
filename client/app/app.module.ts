@@ -18,7 +18,7 @@ import { HomeModule } from './components/home/home.module';
 import { AuthService } from './services/auth.service/auth.service';
 
 @NgModule({
-  imports:      [ 
+  imports:      [               
                   BrowserModule,
                   RouterModule,
                   HomeModule,                

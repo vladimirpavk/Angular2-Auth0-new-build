@@ -4,7 +4,7 @@ import { User, UserInterface } from './user.module';
 
 export class UsersApi implements UserInterface{
     
-    private _allUsers: User[];
+    private _allUsers: Array<User>;
     private _filename: string;
 
     constructor(){
@@ -13,7 +13,7 @@ export class UsersApi implements UserInterface{
         this._allUsers=jsonFile.readFileSync(this._filename);      
     }    
 
-    public getAllUsers(): User[]{
+    public getAllUsers(): Array<User>{
        return this._allUsers;
     }
    
@@ -21,16 +21,21 @@ export class UsersApi implements UserInterface{
        return this._allUsers[Math.ceil(Math.random()*this._allUsers.length)];
     }
 
-    private _compare(element:User){
-        if( element.id==this ){
-            return true;
-        }        
-        else return false; 
-    }
+    public getUserById(userId: number): User
+    {
+        let _filteredUser=this._allUsers['data'].filter((user)=>{
+             return user.id==userId;        
+        });        
+        
+        
+        console.log('Filtered : '+ _filteredUser.length);
 
-    public getUserById(userId: number): User{   
-        console.log(userId);     
-       return this._allUsers.find(this._compare, userId);       
+        if(_filteredUser.length > 0){        
+            return _filteredUser[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public addUser(user: User):void{    
@@ -43,9 +48,12 @@ export class UsersApi implements UserInterface{
         }
     }
 
-    public deleteUser(user: User): void{
-        if(this.getUserById(user.id)){    
-        }
+    public deleteUser(userId: number): void{
+       let _remainUsers = this._allUsers['data'].filter((user)=>{
+           return user.id!=userId;
+       });
+       console.log(_remainUsers);
+       jsonFile.writeFileSync(this._filename, _remainUsers);
     }
 
     public writeFile():void{

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 //components
 import { HomeComponent } from './home.component';
@@ -14,12 +15,13 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 //services
 import { AuthService } from '../../services/auth.service/auth.service';
-
+import { UsersService } from '../../services/users.service/users.service';
 
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [ 
+        HttpModule,
         BrowserModule,
         HomeRoutingModule ],
     declarations: [       
@@ -36,6 +38,10 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
         {
             provide: AuthService,
             useClass: AuthService
+        },
+        {
+            provide: UsersService,
+            useClass: UsersService
         }
     ],
     exports: [ HomeRoutingModule ],

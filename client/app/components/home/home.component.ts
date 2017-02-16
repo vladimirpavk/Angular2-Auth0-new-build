@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../../services/auth.service/auth.service';
 
-//import { UsersService } from '../users/users.service';
+import { UsersService } from '../../services/users.service/users.service';
 //import { User } from '../users/user';
 
 @Component({
