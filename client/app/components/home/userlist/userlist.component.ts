@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit{
 
         this._usersService.getAllUsers().subscribe(
                 users => this._users = users,
-                err => console.log(err),
+                err => console.log(err.status),
                 () => {
                     console.log('Request Complete');
                     console.log(this._users);

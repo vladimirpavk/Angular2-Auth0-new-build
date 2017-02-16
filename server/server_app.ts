@@ -39,8 +39,10 @@ export class ServerApp {
         this._app.get('*', (req, res)=>this._renderPage(req, res));        
      }    
 
-     private _listUsers(req: express.Request, res: express.Response){       
-         res.status(200).json(this._usersApi.getAllUsers());        
+     private _listUsers(req: express.Request, res: express.Response){
+       //  console.log(this._usersApi.getAllUsers());
+         // res.status(200).json(this._usersApi.getAllUsers());
+         res.status(401).json({ "message" : "Eror"});        
      }
 
      private _addUser(req:express.Request, res: express.Response){
@@ -49,7 +51,8 @@ export class ServerApp {
      }     
 
      private _deleteUser(req:express.Request, res: express.Response){
-            res.status(200).json(this._usersApi.deleteUser(req.params['id']));          
+            //res.status(200).json(this._usersApi.deleteUser(req.params['id']));
+            res.send(401);          
      }
 
      private _showUserById(req:express.Request, res: express.Response){

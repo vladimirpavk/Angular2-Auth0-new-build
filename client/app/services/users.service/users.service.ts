@@ -21,14 +21,15 @@ export class UsersService{
 
     private extractData(res: Response){
         let body=res.json();       
-        return body.data || {};
+        return body || {};
     }
 
     public getAllUsers2(): Observable<User[]>{        
         return this._authHttp.get(this._listUsersUrl).map(this.extractData);                          
     }
 
-    public getAllUsers(): Observable<User[]>{       
+    public getAllUsers(): Observable<User[]>{    
+        console.log("Client user.service - getAllUsers");   
         return this._http.get(this._listUsersUrl).map(this.extractData);                          
     }
 

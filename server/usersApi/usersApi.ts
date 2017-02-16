@@ -23,7 +23,7 @@ export class UsersApi implements UserInterface{
 
     public getUserById(userId: number): User
     {
-        let _filteredUser=this._allUsers['data'].filter((user)=>{
+        let _filteredUser=this._allUsers.filter((user)=>{
              return user.id==userId;        
         });        
         
@@ -49,7 +49,7 @@ export class UsersApi implements UserInterface{
     }
 
     public deleteUser(userId: number): void{
-       let _remainUsers = this._allUsers['data'].filter((user)=>{
+       let _remainUsers = this._allUsers.filter((user)=>{
            return user.id!=userId;
        });
        console.log(_remainUsers);
