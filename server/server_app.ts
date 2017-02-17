@@ -38,8 +38,8 @@ export class ServerApp {
         this._app.use('/usersApi/user', bodyParser.json());
         this._app.post('/usersApi/user', (req, res)=>this._addUser(req, res));
 
-        //this._app.delete('/usersApi/deleteUser', (req, res)=>this._deleteUser(req, res));
-        this._app.get('/usersApi/deleteUser/:id', (req, res)=>this._deleteUser(req, res));        
+        this._app.delete('/usersApi/user', (req, res)=>this._deleteUser(req, res));
+        
         this._app.get('/usersApi/user/:id', (req, res)=>this._showUserById(req, res));
 
         //should be stg like this in the end
@@ -70,8 +70,11 @@ export class ServerApp {
      }     
 
      private _deleteUser(req:express.Request, res: express.Response){
-            //res.status(200).json(this._usersApi.deleteUser(req.params['id']));
-            //res.send(401);          
+            console.log(req.body);
+            
+            let finished=this._usersApi.deleteUser(req.body);
+            if(finished) return res.status(200).json({"message": "User deleted successfully"})
+            else return res.status(400).json({"message": "User with id does not exists"});                     
      }
 
      private _showUserById(req:express.Request, res: express.Response){

@@ -39,8 +39,6 @@ export class UsersApi implements UserInterface{
     }
 
     public addUser(user: any):boolean{
-        console.log("From addUser: " + user.id);
-
         if(this.getUserById(user.id)==null){
             this._allUsers.push(user);
             jsonFile.writeFileSync(this._filename, this._allUsers);
@@ -52,17 +50,17 @@ export class UsersApi implements UserInterface{
         }
     }
 
-    public deleteUser(userId: number): boolean{
-        if(this.getUserById(userId)==null)
+    public deleteUser(userId: any): boolean{     
+        if(this.getUserById(userId.id)==null)
         {
             //user with the specified id does not exists
             return false;
         }
     
         let _remainUsers = this._allUsers.filter((user)=>{
-            return user.id!=userId;
+            return user.id!=userId.id;
         });
-       
+    
         jsonFile.writeFileSync(this._filename, _remainUsers);
 
         return true;
