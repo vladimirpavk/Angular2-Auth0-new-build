@@ -50,15 +50,15 @@ export class UsersApi implements UserInterface{
         }
     }
 
-    public deleteUser(userId: any): boolean{     
-        if(this.getUserById(userId.id)==null)
+    public deleteUser(userId: number): boolean{     
+        if(this.getUserById(userId)==null)
         {
             //user with the specified id does not exists
             return false;
         }
     
         let _remainUsers = this._allUsers.filter((user)=>{
-            return user.id!=userId.id;
+            return user.id!=userId;
         });
     
         jsonFile.writeFileSync(this._filename, _remainUsers);

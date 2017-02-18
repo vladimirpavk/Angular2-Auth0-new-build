@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
 
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
@@ -11,6 +11,7 @@ import { User } from './user';
 export class UsersService{
 
     private _listUsersUrl='http://localhost:3000/usersApi/listUsers';
+    private _userUrl='http://localhost:3000/usersapi/user'
     //private _usersUrl='server/client/app/js/users/users.json';
 
     constructor(private _authHttp: AuthHttp,
@@ -31,6 +32,17 @@ export class UsersService{
     public getAllUsers(): Observable<User[]>{    
         console.log("Client user.service - getAllUsers");   
         return this._http.get(this._listUsersUrl).map(this.extractData);                          
+    }
+
+    public deleteUserById(userId: number): Observable<Response>{
+        console.log("From usersSErvice ");
+      
+        let body={ "id": userId };
+        let options= new RequestOptions({
+            body: body,
+            method: RequestMethod.Delete
+        });
+        return this._http.request(this._userUrl, options);
     }
 
 }

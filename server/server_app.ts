@@ -37,16 +37,8 @@ export class ServerApp {
             }));                
         this._app.use('/usersApi/user', bodyParser.json());
         this._app.post('/usersApi/user', (req, res)=>this._addUser(req, res));
-
         this._app.delete('/usersApi/user', (req, res)=>this._deleteUser(req, res));
-        
         this._app.get('/usersApi/user/:id', (req, res)=>this._showUserById(req, res));
-
-        //should be stg like this in the end
-        //this._app.get('/usersApi/listUsers', (req,res)=>this._listUsers(req, res));
-        //this._app.post('/usersApi', (req, res)=>this._addUser(req, res));
-        //this._app.delete('/usersApi', (req, res)=>this._deleteUser(req, res));
-        //this._app.get('/usersApi/:id', (req, res)=>this._showUserById(req, res));
 
         this._app.get('*', (req, res)=>this._renderPage(req, res));        
      }    
@@ -58,8 +50,7 @@ export class ServerApp {
      private _addUser(req:express.Request, res: express.Response){
          console.log("addUser");
          console.log(req.body);
-         //res.status(200).json(req.body); 
-
+      
          let finished=this._usersApi.addUser(req.body);
          if(finished) res.status(201).json({
              "message": "User created"
@@ -70,9 +61,9 @@ export class ServerApp {
      }     
 
      private _deleteUser(req:express.Request, res: express.Response){
-            console.log(req.body);
+            console.log("From server deleteUser :" + req.body);
             
-            let finished=this._usersApi.deleteUser(req.body);
+            let finished=this._usersApi.deleteUser(req.body.id);
             if(finished) return res.status(200).json({"message": "User deleted successfully"})
             else return res.status(400).json({"message": "User with id does not exists"});                     
      }

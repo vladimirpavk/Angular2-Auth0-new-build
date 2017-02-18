@@ -1,5 +1,6 @@
 /// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
 import { Component, OnInit } from '@angular/core';
+
 import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
 
@@ -15,20 +16,47 @@ export class UserListComponent implements OnInit{
     private _messageH2: string;
     private _users: Array<User>;
 
-    constructor(private _usersService: UsersService){
+    constructor(private _usersService: UsersService,
+    ){
 
     }
 
     ngOnInit(){
         this._messageH2="User List Component";
+        this._getUserList();
+        }
 
-        this._usersService.getAllUsers().subscribe(
-                users => this._users = users,
+        private _getUserList():void{
+             this._usersService.getAllUsers().subscribe(
+                users => 
+                {
+                    this._users = users;
+                    console.log(this._users);
+                },
                 err => console.log(err.status),
                 () => {
-                    console.log('Request Complete');
-                    console.log(this._users);
+                    console.log('getAllUsersRequest Complete');                
                 }
             );
         }
+
+        public trash_clicked(userId: number): void{
+            console.log(userId);
+
+            this._usersService.deleteUserById(userId).subscribe(
+                response=>{
+                    console.log("From response: "+response);
+                    this._users=this._users.map(
+                        (element)=>{
+                           if(element.id!=userId) return element;
+                        });
+                },
+                err=>console.log("From error: "+err),
+                 () => {
+                    console.log('Request Complete');
+                    //console.log(this._users);
+                }
+            );
+        }
+            
 }
