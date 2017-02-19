@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 //components
 import { HomeComponent } from './home.component';
@@ -21,6 +22,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [ 
+        FormsModule,
         HttpModule,
         BrowserModule,
         HomeRoutingModule ],

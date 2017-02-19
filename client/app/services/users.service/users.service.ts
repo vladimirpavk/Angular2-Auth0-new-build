@@ -45,4 +45,15 @@ export class UsersService{
         return this._http.request(this._userUrl, options);
     }
 
+    public addNewUser(user: User): Observable<Response>{
+        console.log("From users.service :"+user);
+        let body={
+            "data" : user
+        };
+        let options= new RequestOptions({
+            body: body,
+            method: RequestMethod.Post
+        });
+        return this._http.request(this._userUrl, options);
+    }
 }

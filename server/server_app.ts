@@ -51,7 +51,7 @@ export class ServerApp {
          console.log("addUser");
          console.log(req.body);
       
-         let finished=this._usersApi.addUser(req.body);
+         let finished=this._usersApi.addUser(req.body.data);
          if(finished) res.status(201).json({
              "message": "User created"
          })
