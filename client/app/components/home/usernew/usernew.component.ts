@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../services/auth.service/auth.service';
 
 import { UsersService } from '../../../services/users.service/users.service';
@@ -14,6 +14,8 @@ let __moduleName: any;
 export class UserNewComponent implements OnInit{
     
     private _messageH2: string;
+    private _formUser: User;
+    private _formSubmitted: boolean;
 
     constructor(private _authService: AuthService,
                 private _usersService: UsersService
@@ -23,10 +25,27 @@ export class UserNewComponent implements OnInit{
 
     ngOnInit(){
         this._messageH2="User New Component";
+        this._formUser=new User();
+        this._formSubmitted=false;
     }
 
-    private addNewUserClicked(): void{
-         this._usersService.addNewUser(
+    private addNewUserClicked(event): void{
+        if(!this._formSubmitted){
+            this._usersService.addNewUser(this._formUser).subscribe(        
+                response=>{
+                   console.log("From response addnewuser: "+response)
+                },
+                err=>console.log("From error: "+err),
+                 () => {
+                    console.log('Request Complete');
+                    //console.log(this._users);
+                }
+            );
+        }
+        this._formSubmitted=true;s
+        //console.log(event);
+        //console.log(this._formUser);
+         /*this._usersService.addNewUser(
              { "id": 516,
                "name": "Dragica",
                "lastname": "Petkovic",
@@ -41,6 +60,6 @@ export class UserNewComponent implements OnInit{
                     console.log('Request Complete');
                     //console.log(this._users);
                 }
-            );
+            );*/
     }
 }
