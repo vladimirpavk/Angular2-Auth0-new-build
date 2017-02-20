@@ -1,32 +1,36 @@
 <h2>{{_messageH2}}</h2>
 
-<div class="container">
+<div class="container" style="border-style:solid; width: 500px">
     <form (ngSubmit)="addNewUserClicked(forma)" #forma="ngForm">
         
-        <div class="form-group">                    
+        <div class="form-group" style="border-style:solid">                    
             <label for="id">ID :</label>
             <input name="id" class="form-control" id="id" required
-            type="text" [(ngModel)]="_formUser.id"/>
+            type="number" [(ngModel)]="_formUser.id" #idSpy="ngModel" min="1" max="999"/><span *ngIf="idSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></span>            
+            <div *ngIf="!idSpy.valid || (idSpy.value<999 && idSpy.value>1)" class="label label-danger">* This field is required</div>                 
         </div>
-
+    
         <div class="form-group" >
             <label for="name">Name :</label>
             <input name="name" class="form-control" id="name" required
-                type="text" [(ngModel)]="_formUser.name"/>
-        </div>
-
+                type="text" [(ngModel)]="_formUser.name" #nameSpy="ngModel" minlength="2" maxlength="30"/><span *ngIf="nameSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></span>
+             <div *ngIf="!nameSpy.valid"><label class="label label-danger">* This field is required</label></div>
+        </div>               
+      
         <div class="form-group">
             <label for="lastname">Lastname :</label>
             <input name="lastname" class="form-control" id="lastname" required
-                type="text" [(ngModel)]="_formUser.lastname"/>
+                type="text" [(ngModel)]="_formUser.lastname" #lastnameSpy="ngModel" minlength="2" maxlength="30"/><span *ngIf="lastnameSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></span>
+            <div *ngIf="!lastnameSpy.valid"><label class="label label-danger">* This field is required</label></div>
         </div>
-
+    
         <div class="form-group">
             <label for="pict">Picture :</label>
             <input name="pict" class="form-control" id="pict" required
-                type="text" [(ngModel)]="_formUser.picture"/>
+                type="text" [(ngModel)]="_formUser.picture" #pictSpy="ngModel" minlength="2" maxlength="30"/><span *ngIf="pictSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></span>
+             <div *ngIf="!pictSpy.valid"><label class="label label-danger">* This field is required</label></div>
         </div>
-
+      
         <button type="submit" class="btn btn-default" [disabled]="!forma.form.valid">Submit</button>
     </form>
 </div>

@@ -26,11 +26,12 @@ export class UserNewComponent implements OnInit{
     ngOnInit(){
         this._messageH2="User New Component";
         this._formUser=new User();
-        this._formSubmitted=false;
+       // this._formSubmitted=false;
     }
 
     private addNewUserClicked(event): void{
-        if(!this._formSubmitted){
+        console.log(event);
+        /*if(!this._formSubmitted){
             this._usersService.addNewUser(this._formUser).subscribe(        
                 response=>{
                    console.log("From response addnewuser: "+response)
@@ -41,8 +42,8 @@ export class UserNewComponent implements OnInit{
                     //console.log(this._users);
                 }
             );
-        }
-        this._formSubmitted=true;s
+        }*/
+        //this._formSubmitted=true;
         //console.log(event);
         //console.log(this._formUser);
          /*this._usersService.addNewUser(
