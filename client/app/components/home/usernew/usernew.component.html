@@ -18,17 +18,13 @@
                 type="text" [(ngModel)]="_formUser.name" #nameSpy="ngModel" minlength="2" maxlength="30"/>
                 <div *ngIf="nameSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></div>
              <div *ngIf="!nameSpy.valid && !nameSpy.pristine" class="label label-danger">* This field is required, min length 2, max length 30 characters</div>
-        </div>               
       
-        <div class="form-group">
             <label for="lastname"><h3>Lastname :</h3></label>
             <input name="lastname" class="form-control" id="lastname" required
                 type="text" [(ngModel)]="_formUser.lastname" #lastnameSpy="ngModel" minlength="2" maxlength="30"/>
                 <div *ngIf="lastnameSpy.valid" style="color: green" class="glyphicon glyphicon-ok"></div>
             <div *ngIf="!lastnameSpy.valid && !lastnameSpy.pristine" class="label label-danger">* This field is required</div>
-        </div>
-    
-        <div class="form-group">
+       
             <label for="pict"><h3>Picture :</h3></label>
             <input name="pict" class="form-control" id="pict" required
                 type="text" [(ngModel)]="_formUser.picture" #pictSpy="ngModel" minlength="2" maxlength="30"/>

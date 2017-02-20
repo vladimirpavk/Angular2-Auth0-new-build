@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service/auth.service';
 
 import { UsersService } from '../../../services/users.service/users.service';
@@ -18,7 +19,8 @@ export class UserNewComponent implements OnInit{
     private _formSubmitted: boolean;
 
     constructor(private _authService: AuthService,
-                private _usersService: UsersService
+                private _usersService: UsersService,
+                private _router: Router
     ){
 
     }
@@ -31,7 +33,7 @@ export class UserNewComponent implements OnInit{
 
     private addNewUserClicked(event): void{
         console.log(event);
-        /*if(!this._formSubmitted){
+        if(!this._formSubmitted){
             this._usersService.addNewUser(this._formUser).subscribe(        
                 response=>{
                    console.log("From response addnewuser: "+response)
@@ -39,11 +41,12 @@ export class UserNewComponent implements OnInit{
                 err=>console.log("From error: "+err),
                  () => {
                     console.log('Request Complete');
+                    this._router.navigate(['/home/userlist']);
                     //console.log(this._users);
                 }
             );
-        }*/
-        //this._formSubmitted=true;
+        }
+        this._formSubmitted=true;
         //console.log(event);
         //console.log(this._formUser);
          /*this._usersService.addNewUser(
