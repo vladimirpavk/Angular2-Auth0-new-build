@@ -22,6 +22,7 @@ export class UserListComponent implements OnInit{
     }
 
     ngOnInit(){
+        console.log("Userlist component ngOnInit");
         this._messageH2="User List Component";
         this._getUserList();
         }
@@ -46,17 +47,18 @@ export class UserListComponent implements OnInit{
             this._usersService.deleteUserById(userId).subscribe(
                 response=>{
                     console.log("From response: "+response);
-                    this._users=this._users.map(
+                    this._users=this._users.filter(
                         (element)=>{
-                           if(element.id!=userId) return element;
-                        });
+                           return element.id!=userId;
+                        });                    
                 },
                 err=>console.log("From error: "+err),
                  () => {
                     console.log('Request Complete');
-                    //console.log(this._users);
+                    console.log(this._users);
                 }
             );
+        
         }
             
 }
