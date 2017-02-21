@@ -55,9 +55,12 @@ export class UserNewComponent implements OnInit{
         this._formSubmitted=true;      
     }
 
-    private save_Clicked(){
-        let allPristine: boolean = this.idSpy.pristine && this.nameSpy.pristine && this.lastnameSpy.pristine && this.pictSpy.pristine;
+    public isAllPristine(): boolean{
+        return this.idSpy.pristine && this.nameSpy.pristine && this.lastnameSpy.pristine && this.pictSpy.pristine;
+    }
 
+    private save_Clicked(){
+        let allPristine: boolean = this.isAllPristine();
         console.log(allPristine);
     }
 }

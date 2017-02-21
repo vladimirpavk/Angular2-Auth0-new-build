@@ -6,7 +6,7 @@ import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
 
 import { AuthGuard } from '../../AuthGuard';
-import { UserNewCanDeactivateGuard } from './usernew/usernewcandeactivate.guard';
+import { UserNewCanDeactivateGuard } from './usernew/usernewcandeactivateguard.service';
 
 export const homeRoutes: Routes = [ 
 { 
