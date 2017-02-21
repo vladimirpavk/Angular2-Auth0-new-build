@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service/auth.service';
 
@@ -14,6 +14,11 @@ let __moduleName: any;
 })
 export class UserNewComponent implements OnInit{
     
+    @ViewChild('idSpy') idSpy;
+    @ViewChild('nameSpy') nameSpy;
+    @ViewChild('lastnameSpy') lastnameSpy;
+    @ViewChild('pictSpy') pictSpy;
+
     private _messageH2: string;
     private _formUser: User;
     private _formSubmitted: boolean;
@@ -47,24 +52,12 @@ export class UserNewComponent implements OnInit{
                 }
             );
         }
-        this._formSubmitted=true;
-        //console.log(event);
-        //console.log(this._formUser);
-         /*this._usersService.addNewUser(
-             { "id": 516,
-               "name": "Dragica",
-               "lastname": "Petkovic",
-               "picture": "nemal"
-            }
-         ).subscribe(        
-                response=>{
-                   console.log("From response addnewuser: "+response)
-                },
-                err=>console.log("From error: "+err),
-                 () => {
-                    console.log('Request Complete');
-                    //console.log(this._users);
-                }
-            );*/
+        this._formSubmitted=true;      
+    }
+
+    private save_Clicked(){
+        let allPristine: boolean = this.idSpy.pristine && this.nameSpy.pristine && this.lastnameSpy.pristine && this.pictSpy.pristine;
+
+        console.log(allPristine);
     }
 }
