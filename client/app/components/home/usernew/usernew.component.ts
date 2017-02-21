@@ -17,6 +17,7 @@ export class UserNewComponent implements OnInit{
     private _messageH2: string;
     private _formUser: User;
     private _formSubmitted: boolean;
+    public _allPristine: boolean | string ="Nista";
 
     constructor(private _authService: AuthService,
                 private _usersService: UsersService,

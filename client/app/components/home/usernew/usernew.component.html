@@ -3,16 +3,16 @@
 <div class="container" style="width: 500px">
     <form (ngSubmit)="addNewUserClicked(forma)" #forma="ngForm">
         
-        <div class="form-group">                    
-            <label for="id"><h3>ID :</h3></label>
-            <input name="id" class="form-control" id="id" required
-                type="number" [(ngModel)]="_formUser.id" #idSpy="ngModel" min="1" max="999"/>
-            <div *ngIf="idSpy.valid && !idSpy.pristine && idSpy.value<1000" style="color: green" class="glyphicon glyphicon-ok"></div>                      
-            <div *ngIf="!idSpy.valid && !idSpy.pristine" class="label label-danger">* This field is required</div>
-            <div *ngIf="idSpy.value>999 && !idSpy.pristine" class="label label-danger">* Value must be below 1000</div>                   
-        </div>
-    
-        <div class="form-group" >
+        <div >
+            <div>                    
+                <label for="id"><h3>ID :</h3></label>
+                <input name="id" class="form-control" id="id" required
+                    type="number" [(ngModel)]="_formUser.id" #idSpy="ngModel" min="1" max="999"/>                
+                <span *ngIf="idSpy.valid && !idSpy.pristine && idSpy.value<1000" style="color: green" class="glyphicon glyphicon-ok"></span>                                      
+                <div *ngIf="!idSpy.valid && !idSpy.pristine" class="label label-danger">* This field is required</div>
+                <div *ngIf="idSpy.value>999 && !idSpy.pristine" class="label label-danger">* Value must be below 1000</div>                   
+            </div>
+
             <label for="name"><h3>Name :</h3></label>
             <input name="name" class="form-control" id="name" required
                 type="text" [(ngModel)]="_formUser.name" #nameSpy="ngModel" minlength="2" maxlength="30"/>
@@ -33,5 +33,7 @@
         </div>
       
         <button type="submit" class="btn btn-default" [disabled]="!forma.form.valid">Submit</button>
+       <!-- {{_allPristine = idSpy.pristine && nameSpy.pristine && lastnameSpy.pristine && pictSpy.pristine}} -->
+       
     </form>
 </div>

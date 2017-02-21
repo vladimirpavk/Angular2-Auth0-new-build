@@ -6,14 +6,16 @@ import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
 
 import { AuthGuard } from '../../AuthGuard';
+import { UserNewCanDeactivateGuard } from './usernew/usernewcandeactivate.guard';
 
 export const homeRoutes: Routes = [ 
 { 
-   path: 'home', component: HomeComponent, canActivate: [AuthGuard], children:
+   path: 'home', component: HomeComponent, canActivate: [AuthGuard], 
+   children:
    [
         { path: '', redirectTo: 'userlist', pathMatch: 'full' },
         { path: 'userlist', component: UserListComponent },
-        { path: 'usernew',  component: UserNewComponent },
+        { path: 'usernew',  component: UserNewComponent, canDeactivate:[ UserNewCanDeactivateGuard ] },
         { path: '**', redirectTo: 'userlist' }
    ]
 }
@@ -23,7 +25,10 @@ export const homeRoutes: Routes = [
     imports: [
         RouterModule.forRoot(homeRoutes)
     ],
-    providers: [ AuthGuard ],
+    providers: [ 
+        AuthGuard,
+        UserNewCanDeactivateGuard 
+        ],
     exports: [
         RouterModule
     ]
