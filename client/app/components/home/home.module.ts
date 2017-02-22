@@ -25,6 +25,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [ 
+        Ng2Bs3ModalModule,
         FormsModule,
         HttpModule,
         BrowserModule,

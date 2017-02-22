@@ -23,7 +23,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
-      'angular2-jwt': 'npm:angular2-jwt'
+      'angular2-jwt': 'npm:angular2-jwt',
+      'ng2-bs3-modal': 'npm:ng2-bs3-modal'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -39,6 +40,7 @@
         defaultExtension: 'js'
       },
       'ng2-bs3-modal': {
+        main: './ng2-bs3-modal.js',
         defaultExtension: 'js'
       }
     }

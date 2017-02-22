@@ -13,7 +13,7 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
            // console.log("UserNewDeactivateGuard constructor");
             //console.log(component._allPristine);
             //return true;            
-
+            
             return component.isAllPristine();
         }                  
 
