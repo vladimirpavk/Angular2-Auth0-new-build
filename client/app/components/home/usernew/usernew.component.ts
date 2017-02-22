@@ -63,4 +63,8 @@ export class UserNewComponent implements OnInit{
         let allPristine: boolean = this.isAllPristine();
         console.log(allPristine);
     }
+
+    private modalOpen(){
+        
+    }
 }

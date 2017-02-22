@@ -37,6 +37,9 @@
       'angular2-jwt': {
         main: './angular2-jwt.js',
         defaultExtension: 'js'
+      },
+      'ng2-bs3-modal': {
+        defaultExtension: 'js'
       }
     }
   });
