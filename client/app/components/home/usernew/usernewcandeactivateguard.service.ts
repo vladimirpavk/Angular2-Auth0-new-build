@@ -13,8 +13,21 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
            // console.log("UserNewDeactivateGuard constructor");
             //console.log(component._allPristine);
             //return true;            
-            
-            return component.isAllPristine();
+            component.modalDialog.onClose.subscribe((val)=>this._onClose(val));
+
+            component.modalDialog.onDismiss.subscribe((val)=>this._onDismiss(val));
+
+             component.modalDialog.open();
+
+            //return component.isAllPristine();
         }                  
+
+        private _onClose(val: any): boolean{
+            return true;
+        }
+
+        private _onDismiss(val: any): boolean{
+            return false;
+        }
 
 }

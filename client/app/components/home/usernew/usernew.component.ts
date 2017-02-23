@@ -1,8 +1,14 @@
 import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service/auth.service';
 
+//3-rd party components
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+
+//services
+import { AuthService } from '../../../services/auth.service/auth.service';
 import { UsersService } from '../../../services/users.service/users.service';
+
+//model
 import { User } from '../../../services/users.service/user';
 
 let __moduleName: any;
@@ -18,6 +24,8 @@ export class UserNewComponent implements OnInit{
     @ViewChild('nameSpy') nameSpy;
     @ViewChild('lastnameSpy') lastnameSpy;
     @ViewChild('pictSpy') pictSpy;
+
+    @ViewChild('modal') modalDialog: ModalComponent;
 
     private _messageH2: string;
     private _formUser: User;
@@ -47,8 +55,7 @@ export class UserNewComponent implements OnInit{
                 err=>console.log("From error: "+err),
                  () => {
                     console.log('Request Complete');
-                    this._router.navigate(['/home/userlist']);
-                    //console.log(this._users);
+                    this._router.navigate(['/home/userlist']);                   
                 }
             );
         }
@@ -64,7 +71,33 @@ export class UserNewComponent implements OnInit{
         console.log(allPristine);
     }
 
-    private modalOpen(){
+    private modalOpen(): void{
         
+       /* this.modalDialog.onClose.subscribe((val)=>{
+            console.log("Modal Dialog on close");
+        });
+
+        this.modalDialog.onDismiss.subscribe((val)=>{
+            console.log("Modal dialog on dismiss");
+        });
+
+        this.modalDialog.onOpen.subscribe((val)=>{
+            console.log("Modal dialog on open.");
+        })*/
+        
+
+        this.modalDialog.open();    
     }
+
+    private modalDismiss(): boolean{
+        //console.log("modalDismiss()");
+        return false;
+    }
+
+    private modalClose(): boolean{
+        //console.log("modalClose()")
+        this.modalDialog.close();
+        return true;
+    };
+
 }
