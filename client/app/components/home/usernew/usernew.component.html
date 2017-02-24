@@ -48,8 +48,8 @@
             Do you still want to continue ?
         </modal-body>
         <!-- <modal-footer [show-default-buttons]="true"></modal-footer> -->
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalDismiss()">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="modalClose()">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-close="modal" (click)="yesButtonClick()">Yes</button>
     </modal>
 
 </div>

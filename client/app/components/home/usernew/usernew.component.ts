@@ -43,6 +43,8 @@ export class UserNewComponent implements OnInit{
         this._messageH2="User New Component";
         this._formUser=new User();
        // this._formSubmitted=false;
+
+       this.yesButtonClicked=new EventEmitter<boolean>();
     }
 
     private addNewUserClicked(event): void{
@@ -86,18 +88,31 @@ export class UserNewComponent implements OnInit{
         })*/
         
 
-        this.modalDialog.open();    
+        //this.modalDialog.open();    
     }
 
-    private modalDismiss(): boolean{
-        //console.log("modalDismiss()");
-        return false;
-    }
-
-    private modalClose(): boolean{
-        //console.log("modalClose()")
+    /*public modalAnyButtonClicked(buttonNum: number): Promise<boolean>{
         this.modalDialog.close();
-        return true;
-    };
+        console.log(buttonNum);
+
+        return new Promise((resolve, reject)=>{
+            if(buttonNum==2){
+                resolve(true);
+            }
+            else
+            {
+                resolve(false);
+            }
+
+        });*/
+
+        public yesButtonClicked:EventEmitter<boolean>;
+
+        public yesButtonClick(): void{
+            this.yesButtonClicked.emit(true);
+        }
+
+        }
+    }   
 
 }
