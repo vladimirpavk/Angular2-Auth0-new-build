@@ -10,18 +10,6 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Promise<boolean> | boolean{
 
-           // console.log("UserNewDeactivateGuard constructor");
-            //console.log(component._allPristine);
-            //return true;            
-           /* component.modalDialog.onClose.subscribe((val)=>this._onClose(val));
-*/
-           // component.modalDialog.onDismiss.subscribe((val)=>this._onDismiss(val));
-
-            // component.modalDialog.open();
-
-          //  return component.isAllPristine();
-
-
             if(component.isAllPristine()){
                 return true;
             }
@@ -29,12 +17,10 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
             component.modalDialog.open();
             
             return new Promise((resolve, reject)=>{
-                component.modalDialog.onClose.subscribe(()=>{
-                    console.log("ModalDialog onClose");
-                    resolve(false)});
-                component.yesButtonClicked.subscribe(()=>{
-                    console.log("ModalDialog Yes");
-                    resolve(true)});
+                     component.buttonClicked.subscribe((val)=>
+                    {
+                        resolve(val);
+                    })
             });
 
         }                  

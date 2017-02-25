@@ -32,6 +32,8 @@ export class UserNewComponent implements OnInit{
     private _formSubmitted: boolean;
     public _allPristine: boolean | string ="Nista";
 
+    public buttonClicked:EventEmitter<boolean>;
+ 
     constructor(private _authService: AuthService,
                 private _usersService: UsersService,
                 private _router: Router
@@ -42,9 +44,8 @@ export class UserNewComponent implements OnInit{
     ngOnInit(){
         this._messageH2="User New Component";
         this._formUser=new User();
-       // this._formSubmitted=false;
-
-       this.yesButtonClicked=new EventEmitter<boolean>();
+ 
+       this.buttonClicked=new EventEmitter<boolean>();     
     }
 
     private addNewUserClicked(event): void{
@@ -68,51 +69,9 @@ export class UserNewComponent implements OnInit{
         return this.idSpy.pristine && this.nameSpy.pristine && this.lastnameSpy.pristine && this.pictSpy.pristine;
     }
 
-    private save_Clicked(){
-        let allPristine: boolean = this.isAllPristine();
-        console.log(allPristine);
-    }
-
-    private modalOpen(): void{
-        
-       /* this.modalDialog.onClose.subscribe((val)=>{
-            console.log("Modal Dialog on close");
-        });
-
-        this.modalDialog.onDismiss.subscribe((val)=>{
-            console.log("Modal dialog on dismiss");
-        });
-
-        this.modalDialog.onOpen.subscribe((val)=>{
-            console.log("Modal dialog on open.");
-        })*/
-        
-
-        //this.modalDialog.open();    
-    }
-
-    /*public modalAnyButtonClicked(buttonNum: number): Promise<boolean>{
+    public modalAnyButtonClicked(buttonNum: number): void{
         this.modalDialog.close();
-        console.log(buttonNum);
-
-        return new Promise((resolve, reject)=>{
-            if(buttonNum==2){
-                resolve(true);
-            }
-            else
-            {
-                resolve(false);
-            }
-
-        });*/
-
-        public yesButtonClicked:EventEmitter<boolean>;
-
-        public yesButtonClick(): void{
-            this.yesButtonClicked.emit(true);
-        }
-
-        }
-    }   
-
+       if(buttonNum==1) this.buttonClicked.emit(false);   
+      else this.buttonClicked.emit(true); 
+    };
 }
