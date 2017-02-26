@@ -24,11 +24,11 @@ export class UserListComponent implements OnInit{
     ngOnInit(){
         console.log("Userlist component ngOnInit");
         this._messageH2="User List Component";
-        this._getUserList();
+        this._getUserList(localStorage.getItem("id_token"));
         }
 
-        private _getUserList():void{
-             this._usersService.getAllUsers().subscribe(
+        private _getUserList(token: string):void{
+             this._usersService.getAllUsers(token).subscribe(
                 users => 
                 {
                     this._users = users;

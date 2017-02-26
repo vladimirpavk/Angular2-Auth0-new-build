@@ -24,13 +24,4 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
             });
 
         }                  
-
-        private _onClose(val: any): boolean{
-            return true;
-        }
-
-        private _onDismiss(val: any): boolean{
-            return false;
-        }
-
 }

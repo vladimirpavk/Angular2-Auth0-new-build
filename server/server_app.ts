@@ -26,7 +26,7 @@ export class ServerApp {
         this._app.use('/node_modules', express.static(path.resolve(__dirname, '../node_modules')));        
         this._app.use('/www', express.static(path.resolve(__dirname, '../client')));        
 
-        //this._app.use('/usersApi', jwtCheck);
+        this._app.use('/usersApi', jwtCheck);
      
         //UsersAPi and REST   
         this._usersApi=new UsersApi();      

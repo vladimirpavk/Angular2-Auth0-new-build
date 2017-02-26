@@ -12,12 +12,14 @@ export class UsersService{
 
     private _listUsersUrl='http://localhost:3000/usersApi/listUsers';
     private _userUrl='http://localhost:3000/usersapi/user'
+    
+    private id_token: string;
     //private _usersUrl='server/client/app/js/users/users.json';
 
     constructor(private _authHttp: AuthHttp,
     private _http: Http){
         console.log("Users service constructor");
-
+        this.id_token=localStorage.getItem('id_token');
     }
 
     private extractData(res: Response){
@@ -29,9 +31,24 @@ export class UsersService{
         return this._authHttp.get(this._listUsersUrl).map(this.extractData);                          
     }
 
-    public getAllUsers(): Observable<User[]>{    
+    /*public getAllUsers(): Observable<User[]>{    
         console.log("Client user.service - getAllUsers");   
         return this._http.get(this._listUsersUrl).map(this.extractData);                          
+    }*/
+
+    public getAllUsers(id_token: string): Observable<User[]>{    
+        console.log(id_token);
+        
+        let body = {
+            "id_token": id_token
+        };
+
+        let options= new RequestOptions({
+             body: body,
+             method: RequestMethod.Get
+        });
+           
+        return this._http.request(this._listUsersUrl, options).map(this.extractData);                          
     }
 
     public deleteUserById(userId: number): Observable<Response>{
