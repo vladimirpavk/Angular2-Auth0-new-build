@@ -36,6 +36,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
         BrowserModule,
         HomeRoutingModule ],
     declarations: [   
+        PopUpComponent,
         UserListComponent2,                       
         HomeComponent,
         UserListComponent,

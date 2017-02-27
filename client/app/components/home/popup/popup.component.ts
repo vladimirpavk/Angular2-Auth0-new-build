@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 let __moduleName: any;
 
-Component({
+@Component({
     moduleId: __moduleName,
     selector: 'popup',    
     templateUrl: 'popup.component.html'
