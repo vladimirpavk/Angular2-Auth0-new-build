@@ -6,10 +6,15 @@ import { FormsModule } from '@angular/forms';
 //ng2-bs3-module
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
-//components
+//home module components
 import { HomeComponent } from './home.component';
 import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
+import { UserListComponent2 } from './userlist2/userlist2.component';
+
+//shared components
+import { PopUpComponent } from './popup/popup.component';
+//import { SharedModule } from '../shared/shared.module';
 
 //routing
 import { HomeRoutingModule } from './home-routing.module';
@@ -24,13 +29,14 @@ import { UsersService } from '../../services/users.service/users.service';
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-    imports: [ 
+    imports: [                
         Ng2Bs3ModalModule,
         FormsModule,
         HttpModule,
         BrowserModule,
         HomeRoutingModule ],
-    declarations: [       
+    declarations: [   
+        UserListComponent2,                       
         HomeComponent,
         UserListComponent,
         UserNewComponent

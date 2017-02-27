@@ -9,7 +9,8 @@ let __moduleName: any;
 @Component({
     moduleId: __moduleName,
     selector: 'userlist',
-    templateUrl: 'userlist.component.html'  ,
+    templateUrl: 'userlist.component.html',   
+
 })
 export class UserListComponent implements OnInit{
     
