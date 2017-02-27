@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
+import { Http, Response, RequestOptions, RequestOptionsArgs, RequestMethod, Headers } from '@angular/http';
 
-import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -14,45 +13,31 @@ export class UsersService{
     private _userUrl='http://localhost:3000/usersapi/user'
     
     private id_token: string;
-    //private _usersUrl='server/client/app/js/users/users.json';
 
-    constructor(private _authHttp: AuthHttp,
-    private _http: Http){
-        console.log("Users service constructor");
+    constructor(private _http: Http){       
         this.id_token=localStorage.getItem('id_token');
     }
 
     private extractData(res: Response){
         let body=res.json();       
         return body || {};
-    }
+    }   
 
-    public getAllUsers2(): Observable<User[]>{        
-        return this._authHttp.get(this._listUsersUrl).map(this.extractData);                          
-    }
+    public getAllUsers(id_token: string): Observable<User[]>{              
 
-    /*public getAllUsers(): Observable<User[]>{    
-        console.log("Client user.service - getAllUsers");   
-        return this._http.get(this._listUsersUrl).map(this.extractData);                          
-    }*/
-
-    public getAllUsers(id_token: string): Observable<User[]>{    
-        console.log(id_token);
-        
-        let body = {
-            "id_token": id_token
-        };
+        let headers=new Headers({
+           "Authorization": "BEARER "+id_token
+        });
 
         let options= new RequestOptions({
-             body: body,
+             headers: headers,
              method: RequestMethod.Get
         });
            
         return this._http.request(this._listUsersUrl, options).map(this.extractData);                          
     }
 
-    public deleteUserById(userId: number): Observable<Response>{
-        console.log("From usersSErvice ");
+    public deleteUserById(userId: number): Observable<Response>{        
       
         let body={ "id": userId };
         let options= new RequestOptions({
@@ -63,7 +48,7 @@ export class UsersService{
     }
 
     public addNewUser(user: User): Observable<Response>{
-        console.log("From users.service :"+user);
+
         let body={
             "data" : user
         };
