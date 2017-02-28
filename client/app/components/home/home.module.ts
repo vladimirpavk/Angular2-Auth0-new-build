@@ -12,8 +12,8 @@ import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
 
 //shared components
-import { PopUpComponent } from './popup/popup.component';
-//import { SharedModule } from '../shared/shared.module';
+//import { PopUpComponent } from './popup/popup.component';
+import { SharedModule } from '../shared/shared.module';
 
 //routing
 import { HomeRoutingModule } from './home-routing.module';
@@ -28,14 +28,14 @@ import { UsersService } from '../../services/users.service/users.service';
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-    imports: [                
+    imports: [   
+        SharedModule,             
         Ng2Bs3ModalModule,
         FormsModule,
         HttpModule,
         BrowserModule,
         HomeRoutingModule ],
-    declarations: [   
-        PopUpComponent,                            
+    declarations: [                               
         HomeComponent,
         UserListComponent,
         UserNewComponent

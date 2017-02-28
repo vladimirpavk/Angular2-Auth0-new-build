@@ -1,7 +1,7 @@
 /// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { PopUpComponent } from '../popup/popup.component';
+import { PopUpComponent } from '../../shared/popup/popup.component';
 import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
 
