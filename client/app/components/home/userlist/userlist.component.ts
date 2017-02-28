@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit{
                 users => 
                 {
                     this._users = users;
-                    console.log(this._users);
+                    //console.log(this._users);
                 },
                 err => {
                     console.log(err.status);
@@ -57,7 +57,7 @@ export class UserListComponent implements OnInit{
         public trash_clicked(userId: number): void{
             console.log(userId);
 
-            this._usersService.deleteUserById(userId).subscribe(
+            this._usersService.deleteUserById(userId, localStorage.getItem("id_token")).subscribe(
                 response=>{
                     console.log("From response: "+response);
                     this._users=this._users.filter(

@@ -37,10 +37,14 @@ export class UsersService{
         return this._http.request(this._listUsersUrl, options).map(this.extractData);                          
     }
 
-    public deleteUserById(userId: number): Observable<Response>{        
-      
+    public deleteUserById(userId: number, id_token:string): Observable<Response>{        
+        
+         let header=new Headers({
+           "Authorization": "BEARER "+id_token
+        });
         let body={ "id": userId };
         let options= new RequestOptions({
+            headers: header,
             body: body,
             method: RequestMethod.Delete
         });
