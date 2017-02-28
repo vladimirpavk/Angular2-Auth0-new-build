@@ -18,7 +18,12 @@ export class UserListComponent implements OnInit{
     private _messageH2: string;
     private _users: Array<User>;
 
-    @ViewChild("pup") popUpComponent: PopUpComponent;
+    @ViewChild("pup_ok") popUpComponentOk: PopUpComponent;
+    @ViewChild("pup_not_ok") popUpComponentNotOk: PopUpComponent;
+
+    @ViewChild("pup_deleted_ok") popUpComponentDeletedOk: PopUpComponent;
+    @ViewChild("pup_deleted_not_ok") popUpComponentDeletedNotOk: PopUpComponent;
+
 
     constructor(private _usersService: UsersService,
     ){
@@ -38,10 +43,13 @@ export class UserListComponent implements OnInit{
                     this._users = users;
                     console.log(this._users);
                 },
-                err => console.log(err.status),
+                err => {
+                    console.log(err.status);
+                    this.popUpComponentNotOk.buttonClicked();
+                },
                 () => {
-                    console.log('getAllUsersRequest Complete');       
-                    this.popUpComponent.buttonClicked();         
+                    //console.log('getAllUsersRequest Complete');       
+                    this.popUpComponentOk.buttonClicked();         
                 }
             );
         }
@@ -57,10 +65,14 @@ export class UserListComponent implements OnInit{
                            return element.id!=userId;
                         });                    
                 },
-                err=>console.log("From error: "+err),
+                err=>{                    
+                    console.log("User delete error: "+err);
+                    this.popUpComponentDeletedNotOk.buttonClicked();
+                },
                  () => {
-                    console.log('Request Complete');
-                    console.log(this._users);
+                    //console.log('Request Complete');
+                    //console.log(this._users);
+                    this.popUpComponentDeletedOk.buttonClicked();
                 }
             );
         

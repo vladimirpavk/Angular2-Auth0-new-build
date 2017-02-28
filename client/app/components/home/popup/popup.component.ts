@@ -12,7 +12,7 @@ let __moduleName: any;
 export class PopUpComponent implements OnInit{
 
     @Input() setTimeout: number= 2000;
-    @Input() text: string = "All of these elements will be faded out using a CSS3 opacity transition.";
+    @Input() popUpText: string = "All of these elements will be faded out using a CSS3 opacity transition.";
     @Input() ok: boolean = false;
 
     private _title:string;
@@ -22,7 +22,7 @@ export class PopUpComponent implements OnInit{
 
     ngOnInit(){
         this._title="PopUp Component";
-    }
+    }    
 
     public buttonClicked(): void{
         this.isShown=!this.isShown;
