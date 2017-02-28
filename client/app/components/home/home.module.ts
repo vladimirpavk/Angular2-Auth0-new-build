@@ -10,7 +10,6 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { HomeComponent } from './home.component';
 import { UserListComponent } from './userlist/userlist.component';
 import { UserNewComponent } from './usernew/usernew.component';
-import { UserListComponent2 } from './userlist2/userlist2.component';
 
 //shared components
 import { PopUpComponent } from './popup/popup.component';
@@ -36,8 +35,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
         BrowserModule,
         HomeRoutingModule ],
     declarations: [   
-        PopUpComponent,
-        UserListComponent2,                       
+        PopUpComponent,                            
         HomeComponent,
         UserListComponent,
         UserNewComponent

@@ -1,6 +1,7 @@
 /// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { PopUpComponent } from '../popup/popup.component';
 import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
 
@@ -16,6 +17,8 @@ export class UserListComponent implements OnInit{
     
     private _messageH2: string;
     private _users: Array<User>;
+
+    @ViewChild("pup") popUpComponent: PopUpComponent;
 
     constructor(private _usersService: UsersService,
     ){
@@ -37,7 +40,8 @@ export class UserListComponent implements OnInit{
                 },
                 err => console.log(err.status),
                 () => {
-                    console.log('getAllUsersRequest Complete');                
+                    console.log('getAllUsersRequest Complete');       
+                    this.popUpComponent.buttonClicked();         
                 }
             );
         }
