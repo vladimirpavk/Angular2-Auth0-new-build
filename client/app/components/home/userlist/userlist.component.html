@@ -30,10 +30,13 @@
     </table>
 </div>
 
-<popup ok="true" popUpText="Users list successfully retrieved" #pup_ok></popup>
+<popup ok="true" popUpText="Users list successfully retrieved" #pup_ok>
+    <div>Neki element</div>
+</popup>
 <popup popUpText="Error during user retrival" #pup_not_ok></popup>
-<!--<button (click)="pup_ok.buttonClicked()">Klick</button>
-<button (click)="pup_not_ok.buttonClicked()">Klick</button>-->
+
+<button (click)="pup_ok.buttonClicked()">Klick</button>
+<!-- <button (click)="pup_not_ok.buttonClicked()">Klick</button> -->
 
 
 <popup ok="true" popUpText="Users successfully deleted" #pup_deleted_ok></popup>
