@@ -23,10 +23,10 @@ export class UsersService{
         return body || {};
     }   
 
-    public getAllUsers(id_token: string): Observable<User[]>{              
+    public getAllUsers(): Observable<User[]>{              
 
         let headers=new Headers({
-           "Authorization": "BEARER "+id_token
+           "Authorization": "BEARER "+this.id_token
         });
 
         let options= new RequestOptions({
@@ -37,10 +37,10 @@ export class UsersService{
         return this._http.request(this._listUsersUrl, options).map(this.extractData);                          
     }
 
-    public deleteUserById(userId: number, id_token:string): Observable<Response>{        
+    public deleteUserById(userId: number): Observable<Response>{        
         
-         let header=new Headers({
-           "Authorization": "BEARER "+id_token
+        let header=new Headers({
+           "Authorization": "BEARER "+this.id_token
         });
         let body={ "id": userId };
         let options= new RequestOptions({
@@ -53,10 +53,14 @@ export class UsersService{
 
     public addNewUser(user: User): Observable<Response>{
 
+        let header=new Headers({
+           "Authorization": "BEARER "+this.id_token
+        });
         let body={
             "data" : user
         };
         let options= new RequestOptions({
+            headers: header,
             body: body,
             method: RequestMethod.Post
         });

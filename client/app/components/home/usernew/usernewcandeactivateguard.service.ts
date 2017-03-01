@@ -10,7 +10,7 @@ export class UserNewCanDeactivateGuard implements CanDeactivate<UserNewComponent
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Promise<boolean> | boolean{
 
-            if(component.isAllPristine()){
+            if(component.isAllPristine() || component._formSubmitted){
                 return true;
             }
 

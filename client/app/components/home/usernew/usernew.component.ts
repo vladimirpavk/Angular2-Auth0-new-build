@@ -11,6 +11,9 @@ import { UsersService } from '../../../services/users.service/users.service';
 //model
 import { User } from '../../../services/users.service/user';
 
+//custom components
+import { PopUpComponent } from '../../shared/popup/popup.component';
+
 let __moduleName: any;
 
 @Component({
@@ -27,15 +30,19 @@ export class UserNewComponent implements OnInit{
 
     @ViewChild('modal') modalDialog: ModalComponent;
 
+    @ViewChild('pup_ok') popUpComponent_Ok: PopUpComponent;
+    @ViewChild('pup_not_ok') popUpComponent_Not_Ok: PopUpComponent;
+
     private _messageH2: string;
     private _formUser: User;
-    private _formSubmitted: boolean;
+    public _formSubmitted: boolean;
     public _allPristine: boolean | string ="Nista";
 
     public buttonClicked:EventEmitter<boolean>;
  
-    constructor(private _authService: AuthService,
-                private _usersService: UsersService,
+
+    
+    constructor(private _usersService: UsersService,
                 private _router: Router
     ){
 
@@ -44,6 +51,7 @@ export class UserNewComponent implements OnInit{
     ngOnInit(){
         this._messageH2="User New Component";
         this._formUser=new User();
+        this._formSubmitted=false;
  
        this.buttonClicked=new EventEmitter<boolean>();     
     }
@@ -55,9 +63,14 @@ export class UserNewComponent implements OnInit{
                 response=>{
                    console.log("From response addnewuser: "+response)
                 },
-                err=>console.log("From error: "+err),
+                err=>{
+                    console.log("From error: "+err);
+                    this.popUpComponent_Not_Ok.buttonClicked();
+                },
                  () => {
                     console.log('Request Complete');
+                    this.popUpComponent_Ok.buttonClicked();
+                    this._formSubmitted=true;
                     this._router.navigate(['/home/userlist']);                   
                 }
             );

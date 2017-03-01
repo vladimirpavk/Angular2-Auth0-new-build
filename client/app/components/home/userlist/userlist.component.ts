@@ -1,7 +1,7 @@
 /// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { PopUpComponent } from '../../shared/popup/popup.component';
+
 import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
 
@@ -37,7 +37,7 @@ export class UserListComponent implements OnInit{
         }
 
         private _getUserList(token: string):void{
-             this._usersService.getAllUsers(token).subscribe(
+             this._usersService.getAllUsers().subscribe(
                 users => 
                 {
                     this._users = users;
@@ -57,7 +57,7 @@ export class UserListComponent implements OnInit{
         public trash_clicked(userId: number): void{
             console.log(userId);
 
-            this._usersService.deleteUserById(userId, localStorage.getItem("id_token")).subscribe(
+            this._usersService.deleteUserById(userId).subscribe(
                 response=>{
                     console.log("From response: "+response);
                     this._users=this._users.filter(
