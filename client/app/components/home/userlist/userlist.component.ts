@@ -1,6 +1,7 @@
 /// <reference path="../../../../../node_modules/@angular/common/index.d.ts" />
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PopUpComponent } from '../../shared/popup/popup.component';
+//import { PopUpComponent } from '../../shared/popup/popup.component';
+import { FlashBoxComponent } from 'commoncomponents/components/flashbox.component';
 
 import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
@@ -18,11 +19,11 @@ export class UserListComponent implements OnInit{
     private _messageH2: string;
     private _users: Array<User>;
 
-    @ViewChild("pup_ok") popUpComponentOk: PopUpComponent;
-    @ViewChild("pup_not_ok") popUpComponentNotOk: PopUpComponent;
+    @ViewChild("pup_ok") popUpComponentOk: FlashBoxComponent;
+    @ViewChild("pup_not_ok") popUpComponentNotOk: FlashBoxComponent;
 
-    @ViewChild("pup_deleted_ok") popUpComponentDeletedOk: PopUpComponent;
-    @ViewChild("pup_deleted_not_ok") popUpComponentDeletedNotOk: PopUpComponent;
+    @ViewChild("pup_deleted_ok") popUpComponentDeletedOk: FlashBoxComponent;
+    @ViewChild("pup_deleted_not_ok") popUpComponentDeletedNotOk: FlashBoxComponent;
 
 
     constructor(private _usersService: UsersService,
@@ -45,11 +46,11 @@ export class UserListComponent implements OnInit{
                 },
                 err => {
                     console.log(err.status);
-                    this.popUpComponentNotOk.buttonClicked();
+                    this.popUpComponentNotOk.flashOnce();
                 },
                 () => {
                     //console.log('getAllUsersRequest Complete');       
-                    this.popUpComponentOk.buttonClicked();         
+                    this.popUpComponentOk.flashOnce();         
                 }
             );
         }
@@ -67,12 +68,12 @@ export class UserListComponent implements OnInit{
                 },
                 err=>{                    
                     console.log("User delete error: "+err);
-                    this.popUpComponentDeletedNotOk.buttonClicked();
+                    this.popUpComponentDeletedNotOk.flashOnce();
                 },
                  () => {
                     //console.log('Request Complete');
                     //console.log(this._users);
-                    this.popUpComponentDeletedOk.buttonClicked();
+                    this.popUpComponentDeletedOk.flashOnce();
                 }
             );
         

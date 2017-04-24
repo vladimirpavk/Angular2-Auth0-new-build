@@ -52,5 +52,20 @@
 
 </div>
 
-<popup ok="true" popUpText="Users successfully added" #pup_ok></popup>
-<popup popUpText="Error during user addition. User with the same id already exists." #pup_not_ok></popup>
+<flash-box [type]="success" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+   </div>
+   <label>
+       User successfully added
+   </label>
+</flash-box>
+
+<flash-box [type]="warning" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_not_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Error during user insertation</label>
+   </div>
+   <label>
+       User with the same id already exists
+   </label>
+</flash-box>

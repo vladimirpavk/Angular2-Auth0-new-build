@@ -30,16 +30,40 @@
     </table>
 </div>
 
-<popup ok="true" popUpText="Users list successfully retrieved" #pup_ok>
-    <div>Neki element</div>
-</popup>
-<popup popUpText="Error during user retrival" #pup_not_ok></popup>
+<flash-box [type]="success" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+   </div>
+   <label>
+       Users list successfully retrieved
+   </label>
+</flash-box>
 
-<button (click)="pup_ok.buttonClicked()">Klick</button>
-<!-- <button (click)="pup_not_ok.buttonClicked()">Klick</button> -->
+<flash-box [type]="warning" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_not_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+   </div>
+   <label>
+      Error during user retrival
+   </label>
+</flash-box>
 
+<flash-box [type]="success" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_deleted_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+   </div>
+   <label>
+       Users successfully deleted
+   </label>
+</flash-box>
 
-<popup ok="true" popUpText="Users successfully deleted" #pup_deleted_ok></popup>
-<popup popUpText="Error during user deletion" #pup_deleted_not_ok></popup>
+<flash-box [type]="warning" [position]="tr" [max-width]="300px" [setTimeout]=2000 #pup_deleted_not_ok>
+    <div style="border-type: solid; border-width:2px">
+       <label style="color: rgb(0,0,0); text-decoration: underline;">Information message</label>
+   </div>
+   <label>
+      Error during user deletion
+   </label>
+</flash-box>
 
 

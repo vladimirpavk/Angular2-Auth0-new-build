@@ -12,7 +12,8 @@ import { UsersService } from '../../../services/users.service/users.service';
 import { User } from '../../../services/users.service/user';
 
 //custom components
-import { PopUpComponent } from '../../shared/popup/popup.component';
+//import { PopUpComponent } from '../../shared/popup/popup.component';
+import { FlashBoxComponent } from 'commoncomponents/components/flashbox.component';
 
 let __moduleName: any;
 
@@ -30,8 +31,8 @@ export class UserNewComponent implements OnInit{
 
     @ViewChild('modal') modalDialog: ModalComponent;
 
-    @ViewChild('pup_ok') popUpComponent_Ok: PopUpComponent;
-    @ViewChild('pup_not_ok') popUpComponent_Not_Ok: PopUpComponent;
+    @ViewChild('pup_ok') popUpComponent_Ok: FlashBoxComponent;
+    @ViewChild('pup_not_ok') popUpComponent_Not_Ok: FlashBoxComponent;
 
     private _messageH2: string;
     private _formUser: User;
@@ -65,11 +66,11 @@ export class UserNewComponent implements OnInit{
                 },
                 err=>{
                     console.log("From error: "+err);
-                    this.popUpComponent_Not_Ok.buttonClicked();
+                    this.popUpComponent_Not_Ok.flashOnce();
                 },
                  () => {
                     console.log('Request Complete');
-                    this.popUpComponent_Ok.buttonClicked();
+                    this.popUpComponent_Ok.flashOnce();
                     this._formSubmitted=true;
                     this._router.navigate(['/home/userlist']);                   
                 }

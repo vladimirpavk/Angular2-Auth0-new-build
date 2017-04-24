@@ -24,7 +24,8 @@
       // other libraries
       'rxjs': 'npm:rxjs',
       'angular2-jwt': 'npm:angular2-jwt',
-      'ng2-bs3-modal': 'npm:ng2-bs3-modal'
+      'ng2-bs3-modal': 'npm:ng2-bs3-modal',
+      'commoncomponents': 'npm:ng2-flashbox'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -41,6 +42,10 @@
       },
       'ng2-bs3-modal': {
         main: './ng2-bs3-modal.js',
+        defaultExtension: 'js'
+      },
+      'commoncomponents': {
+        main: './commoncomponents.module.js',
         defaultExtension: 'js'
       }
     }

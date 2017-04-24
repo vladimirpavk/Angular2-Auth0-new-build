@@ -13,7 +13,8 @@ import { UserNewComponent } from './usernew/usernew.component';
 
 //shared components
 //import { PopUpComponent } from './popup/popup.component';
-import { SharedModule } from '../shared/shared.module';
+//import { SharedModule } from '../shared/shared.module';
+import { CommonComponentsModule } from 'commoncomponents';
 
 //routing
 import { HomeRoutingModule } from './home-routing.module';
@@ -29,7 +30,7 @@ import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [   
-        SharedModule,             
+        CommonComponentsModule,             
         Ng2Bs3ModalModule,
         FormsModule,
         HttpModule,
