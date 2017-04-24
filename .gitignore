@@ -5,3 +5,4 @@ client/app/**/*.map
 server/**/*.js
 server/**/*.map
 npm-debug*
+server/**/users.json
